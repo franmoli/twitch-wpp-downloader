@@ -37,13 +37,14 @@ def encontrar_video_original():
 if len(sys.argv) < 2:
     print("Usage: twitch-wpp-downloader link/id")
     exit(1)
-    
+
 link = sys.argv[1]
 encontrar_video_original()
 if os.system("twitch-dl download -q 360p " + link) == 1:
     if os.system("twitch-dl download -q 360p60 " + link) == 1:
         if os.system("twitch-dl download -q 360p50 " + link) == 1:
             if os.system("twitch-dl download -q 360p30 " + link) == 1:
+                print("No se pudo encontrar el video")
                 exit(1)
 
 video_original = encontrar_video_original()
